@@ -1,0 +1,122 @@
+create local repository			:	git init
+add files 						:	git add . // git add [filename] or -A 
+remove files					:	git reset [filename]
+remove files from git only		:	git rm -rf --cached $FILES 
+commit 							:	git commit -m "Message"
+view added/modified files		:	git status
+view commit history 			:	git log
+back up to a commit 			:	git reset --hard [sha1-commit-id]
+get rid of last pushed commit	:	git push origin HEAD --force
+remove last commit				:	git reset --hard HEAD  // git reset --hard HEAD~1
+stash changes just in case		:	git stash save "description of save"
+view whats stashed				:	git stash list
+drop stashes 					:	git stash drop
+clone remote repository			:	git clone <url> <where to clone>
+view changes 					:	git diff
+
+add remote repository			:	git remote add [origin] [path]
+view remote repository			:	git remote -v
+pull steps						:	git pull origin master
+undo changes go to last commit	:	git reset --hard
+hard pull						:	git reset --hard origin/master
+hard pull on branch				:	git reset --hard origin/[branch name]
+push steps						:	git push origin master
+
+create branch					:	git branch [branch name]
+link local and remote branch	:	git push --set-upstream origin [branch name]
+view branch						:	git branch -a
+start working in a branch		: 	git checkout [branch name]
+create and work in new branch	:	git checkout -b [branch name]
+push branch to 					:	git push -u origin [branch name]
+merge branch					:	git merge [branch name] // git merge feature
+view branches					:	git branch --merged
+delete branch locally			:	git branch -d [branch name]
+delete branch remotely			:	git push origin --delete [branch name]
+restore all files in directory	:	git restore .
+rename branch					:	git branch -m "new name" -> have to be working in the branch in question
+change git repo name			:	git remote set-url origin https://frank-lavoie@github.com/Frank-Lavoie/Michael_Jackson.git
+
+
+git credential-manager uninstall
+git credential-manager install
+
+CREATE BRANCH
+1- git branch [branch name]  ****creates branch locally
+2- git checkout [branch name]  
+3- git push --set-upstream origin [branch name] ****creates branch remotely
+
+WORK ON BRANCH
+1- git checkout [branch name]
+2- (optional) git pull
+
+
+MERGE BRANCH
+1- git checkout [branch you want to import changes to]
+2- git merge [branch you want to import]  ****only changes branch locally
+3- git push  ***uploads changes remotely 
+
+
+FIX MERGE PROBLEMS
+option 1(manually)
+    open text editor and merge manually
+    git add the files when its done
+option 2(keep remote files)
+    git checkout --theirs path/to/files /or/ git checkout --theirs . //take every files with conflict
+    git add path/to/files
+option 3(keep local files)
+    git checkout --ours path/to/files /or/ git checkout --ours . //take every files with conflict
+    git add path/to/files 
+git commit -m ""
+
+PUSH
+1- git add .  (adds all files that have been added/modified/deleted into the commit)
+2- git status  (shows all modifications)
+3- git commit -m "message"
+4- git push
+
+
+steps to branch
+
+1-Create branch-feature
+2-Work in that branch (checkout)
+3-Commit in branch made for feature
+4-when work is done : git push -u origin [branch name]
+5-switch to master branch
+6-pull origin master
+7-git merge branch-feature
+8-git push origin master
+9-git branch -d branch-feature
+10-git push origin --delete branch-feature
+
+
+create new repo
+
+echo "# Lab04ClothesApp" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Wobbey2/Lab04ClothesApp.git
+git push -u origin main
+
+
+push existing repo from command line
+
+git remote add origin https://github.com/Wobbey2/Lab04ClothesApp.git
+git branch -M main
+git push -u origin main
+
+
+push local files into remote repo with different existing files
+git init
+git add .
+git commit -m ""
+git remote add origin [url ending with .git]
+git pull origin main --allow-unrelated-histories
+*fix merge problems*
+git push --set-upstream origin [branch name]
+
+useful links
+
+https://sethrobertson.github.io/GitFixUm/fixup.html
+https://stackoverflow.com/questions/1125968/how-do-i-force-git-pull-to-overwrite-local-files
