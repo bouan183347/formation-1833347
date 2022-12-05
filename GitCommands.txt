@@ -1,4 +1,4 @@
-create local repository			:	git init
+create local repopository			:	git init
 add files 						:	git add . // git add [filename] or -A 
 remove files					:	git reset [filename]
 remove files from git only		:	git rm -rf --cached $FILES 
